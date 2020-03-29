@@ -1,7 +1,10 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
+.ant-col{
+  border: 1px solid #eee;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
