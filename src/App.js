@@ -1,20 +1,84 @@
-import React, {useState} from 'react';
-import FormBuilder from "./components/forms/FormBuilder";
+import React from 'react';
+import Trips from "./Pages/Trips";
 import './App.css';
-
-
-
-
+// import {Col, Row} from "antd";
+// import {Reindeer, updateData} from "./FormRenderer/Form";
 
 function App(props) {
 
-  const [config, setConfig] = useState(props.config);
+  // const [config, setConfig] = useState(props.config);
 
   return (
     <div className="App">
-      <FormBuilder config={config} />
+      <Trips config={props.config} />
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <>
+//   <Row>
+//     <Col span={16} style={{padding: 20}}>
+//       <h4>Header</h4>
+//       <Reindeer config={this.props.config.header} onChange={updateData.bind(this)}/>
+//     </Col>
+//   </Row>
+// </>
+//

@@ -3,7 +3,13 @@
 }
 
 .ant-col{
+}
+
+.form-section{
   border: 1px solid #eee;
+  margin: 10px 0;
+  padding: 10px;
+
 }
 .App-logo {
   height: 40vmin;
