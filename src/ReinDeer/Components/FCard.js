@@ -5,7 +5,7 @@ function FCard(props){
   return(
     <>
       <div style={{border: "1px solid red"}}>
-        <Reindeer config={props.config} />
+        <Reindeer config={props.config} parent_context={props.parent_context} />
       </div>
     </>
   )

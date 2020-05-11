@@ -1,22 +1,27 @@
 import React from 'react';
-
+import FormGroupDecorator from "./Components/FormGroupDecorator";
 import COMPONENTS_MASTER from "./ComponentsMaster";
 
-
-
 function Reindeer(props){
-  let items = Object.values(props.config.entities).sort((a, b) => a.position - b.position).filter((item) => item.visible);
-  debugger
+  let parent_context = props.parent_context;
+  let items = Object.values(props.config.entities)
+    .sort((a, b) => a.position - b.position)
+    .filter((item) => item.visible);
+
   return(
     <>
-      {items.map((item) => {
+      {items.map((item, key) => {
         let field_type = item.field_type;
-        // Correct! JSX type can be a capitalized variable.
-        debugger
+
         let FormComponent = COMPONENTS_MASTER[field_type] || COMPONENTS_MASTER['text'];
 
         return(
-          <FormComponent config={item} onChange={props.onChange}/>
+          <FormGroupDecorator
+            config={item}
+            onChange={updateData.bind(parent_context)}
+            parent_context={parent_context}
+            component={FormComponent}
+          />
         )
       })}
     </>
@@ -25,7 +30,10 @@ function Reindeer(props){
 
 //
 function updateData(section_name, key, value, event) {
+  console.log("Section Name", section_name, "key", key, "value", value);
+  console.log("State", this.state);
   let section = Object.assign([], this.state[section_name]);
+  console.log("Section", section);
   let item = findEntityFromSection(section, key);
   item.value = value;
 
@@ -39,7 +47,7 @@ function updateData(section_name, key, value, event) {
 }
 
 function findEntityFromSection(section, entity_key) {
-  return section.filter((item) => item.field_key === entity_key)[0];
+  return Object.values(section.entities).filter((item) => item.field_key === entity_key)[0];
 }
 
 function funcUpdateDependencies(value, entities){
@@ -81,23 +89,6 @@ function funcUpdateDependencies(value, entities){
     this.setState({section_name: section})
   });
 }
-
-// WIP
-// function FormGroup(props){
-//   const [config, setConfig] = useState(props.config);
-//   let field_type = config.field_type;
-//   return(
-//     <div className='form-group' style={{width: 250, display: 'inline-block', marginRight: 20, marginBottom: 10}}>
-//       <label htmlFor="">{config.label}</label>
-//
-//     </div>
-//   )
-// }
-
-
-
-
-
 
 
 export default Reindeer;

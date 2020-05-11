@@ -18,12 +18,13 @@ var config3 = {
         "hint": "Select option",
         "field_type": "auto_number",
         "default_value": null,
+        "value": "",
         "editable": true,
         "required": false,
         "active": true,
         "visible": true,
         "unique": false,
-        "position": 5,
+        "position": 0,
         "custom_field": false,
         "options": {
           "sequence": {
@@ -40,6 +41,7 @@ var config3 = {
         "hint": "Select value",
         "field_type": "dropdown",
         "default_value": "1",
+        "value": "",
         "editable": false,
         "required": true,
         "active": true,
@@ -66,8 +68,9 @@ var config3 = {
         "label": "Policy",
         "placeholder": "Enter value",
         "hint": "Select value",
-        "field_type": "lookup",
+        "field_type": "dropdown",
         "default_value": null,
+        "value": "",
         "editable": true,
         "required": true,
         "active": true,
@@ -97,6 +100,7 @@ var config3 = {
         "hint": "Enter value",
         "field_type": "text",
         "default_value": null,
+        "value": "",
         "editable": true,
         "required": false,
         "active": true,
@@ -122,6 +126,7 @@ var config3 = {
         "hint": null,
         "field_type": "card",
         "default_value": null,
+        "value": "",
         "editable": true,
         "required": false,
         "active": true,
@@ -141,6 +146,7 @@ var config3 = {
             "hint": null,
             "field_type": "text",
             "default_value": null,
+            "value": "",
             "editable": true,
             "required": false,
             "active": true,
@@ -160,6 +166,7 @@ var config3 = {
             "hint": null,
             "field_type": "text",
             "default_value": null,
+            "value": "",
             "editable": true,
             "required": false,
             "active": true,
@@ -179,6 +186,7 @@ var config3 = {
             "hint": null,
             "field_type": "text",
             "default_value": null,
+            "value": "",
             "editable": true,
             "required": false,
             "active": true,
@@ -292,7 +300,7 @@ var config3 = {
             "label": "Tax Rate",
             "placeholder": "Enter value",
             "hint": null,
-            "field_type": "text",
+            "field_type": "dropdown",
             "default_value": null,
             "value": "123",
             "editable": true,
@@ -302,6 +310,14 @@ var config3 = {
             "unique": false,
             "position": 0,
             "custom_field": false,
+            "choices": {
+              "choices": [
+                {"id": 1, "name": "3%"},
+                {"id": 2, "name": "5%"},
+                {"id": 3, "name": "12%"},
+                {"id": 4, "name": "18%"},
+              ]
+            },
             "options": {
               "min_items": 1
             }
@@ -511,8 +527,6 @@ var config2 = {
     }
   ]
 };
-
-
 
 var config = {
   "header": [

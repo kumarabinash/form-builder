@@ -16,29 +16,29 @@ class Trips extends Component{
   render() {
     return(
       <>
-        {/* Bank Account */}
-        {/*<Row>*/}
-        {/*  <Col span={16} style={{padding: 20}}>*/}
-        {/*    <h4>Header</h4>*/}
-        {/*    <Reindeer config={this.props.config.headers} parent={this} />*/}
-        {/*  </Col>*/}
-        {/*</Row>*/}
+        {/* Header */}
+        <Row>
+          <Col span={16} style={{padding: 20}}>
+            <h4>Header</h4>
+            <Reindeer config={this.props.config.header} section_id={this.props.config.header.section_id} parent_context={this} />
+          </Col>
+        </Row>
 
 
         <hr/>
         {/* Bank Account */}
-        {/*<Row>*/}
-        {/*  <Col span={16} style={{padding: 20}}>*/}
-        {/*    <h4>Bank Accounts</h4>*/}
-        {/*    <Reindeer config={this.props.config.bank_accounts} parent={this}/>*/}
-        {/*  </Col>*/}
-        {/*</Row>*/}
-
-        {/* Line */}
         <Row>
           <Col span={16} style={{padding: 20}}>
             <h4>Bank Accounts</h4>
-            <Reindeer config={this.props.config.invoice_items} parent={this}/>
+            <Reindeer config={this.props.config.bank_accounts} parent_context={this}/>
+          </Col>
+        </Row>
+
+        {/* Line */}
+        <Row>
+          <Col span={24} style={{padding: 20}}>
+            <h4>Bank Accounts</h4>
+            <Reindeer config={this.props.config.invoice_items} parent_context={this}/>
           </Col>
         </Row>
       </>
