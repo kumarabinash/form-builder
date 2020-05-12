@@ -10,7 +10,7 @@ class Trips extends Component{
   constructor(props) {
     super(props);
 
-    this.state = {...props.config};
+    this.state = {...props};
   }
 
   render() {
@@ -20,7 +20,7 @@ class Trips extends Component{
         <Row>
           <Col span={16} style={{padding: 20}}>
             <h4>Header</h4>
-            <Reindeer config={this.props.config.header} section_id={this.props.config.header.section_id} parent_context={this} />
+            <Reindeer config={this.state.config.header} section_id={this.state.config.header.section_id} parent_context={this} />
           </Col>
         </Row>
 
@@ -30,7 +30,7 @@ class Trips extends Component{
         <Row>
           <Col span={16} style={{padding: 20}}>
             <h4>Bank Accounts</h4>
-            <Reindeer config={this.props.config.bank_accounts} parent_context={this}/>
+            <Reindeer config={this.state.config.bank_accounts} parent_context={this}/>
           </Col>
         </Row>
 
@@ -38,7 +38,7 @@ class Trips extends Component{
         <Row>
           <Col span={24} style={{padding: 20}}>
             <h4>Bank Accounts</h4>
-            <Reindeer config={this.props.config.invoice_items} parent_context={this}/>
+            <Reindeer config={this.state.config.invoice_items} parent_context={this}/>
           </Col>
         </Row>
       </>

@@ -58,12 +58,18 @@ var config3 = {
             "name": "name"
           },
           "choices": [
-            {"id": 1, value: "Open"}
+            {"id": 1, name: "Open"},
+            {"id": 2, name: "Processing"},
+            {"id": 3, name: "Retracted"},
+            {"id": 4, name: "Rejected"},
+            {"id": 5, name: "Approved"},
+            {"id": 6, name: "Closed"},
           ]
         }
       },
       "policy_id": {
         "id": "B7BB9434-9038-11EA-950D-8C8590BE5FB3",
+        "section_id": "header",
         "field_key": "policy_id",
         "label": "Policy",
         "placeholder": "Enter value",
@@ -89,11 +95,55 @@ var config3 = {
                 "vendor_manager"
               ]
             }
-          }
+          },
+          "choices": [
+            {"id": 1, "name": "India"},
+            {"id": 2, "name": "Bangalore"},
+            {"id": 3, "name": "Mumbai"},
+          ]
+        }
+      },
+      "department_id": {
+        "id": "B7BB9434-9038-11EA-950D-8C8590BE5FB3",
+        "section_id": "header",
+        "field_key": "department_id",
+        "label": "Department",
+        "placeholder": "Enter value",
+        "hint": "Select value",
+        "field_type": "dropdown",
+        "default_value": null,
+        "value": "",
+        "editable": true,
+        "required": true,
+        "active": true,
+        "visible": true,
+        "unique": false,
+        "position": 3,
+        "custom_field": false,
+        "options": {},
+        "choices": {
+          "type": "lookup",
+          "config": {
+            "route": "policies",
+            "choice_params": {
+              "permissions": [
+                "vendor_creator",
+                "vendor_manager"
+              ]
+            }
+          },
+          "choices": [
+            {"id": 1, "name": "Marketing"},
+            {"id": 2, "name": "Tech"},
+            {"id": 3, "name": "Sales"},
+            {"id": 4, "name": "Customer Success"},
+            {"id": 5, "name": "Business Development"},
+          ]
         }
       },
       "legal_name": {
         "id": "B7BD9CDE-9038-11EA-950D-8C8590BE5FB3",
+        "section_id": "header",
         "field_key": "legal_name",
         "label": "Legal name",
         "placeholder": "Enter value",
@@ -106,7 +156,7 @@ var config3 = {
         "active": true,
         "visible": true,
         "unique": false,
-        "position": 3,
+        "position": 4,
         "custom_field": false,
         "options": {
           "char_limit": 255
@@ -439,28 +489,7 @@ var config3 = {
   }
 };
 
-var config2 = {
-  "items": [
-    {
-      "id": "",
-      "field_key": "trip_id",
-      "label": "Trip",
-      "placeholder": "Enter value",
-      "hint": "Select option",
-      "field_type": "auto_number",
-      "default_value": null,
-      "editable": true,
-      "required": false,
-      "active": true,
-      "visible": true,
-      "unique": false,
-      "name": "trip_id",
-      "position": 1,
-      "custom_field": false,
-      "options": {"dropdown_fitlers": []}
-    }
-  ],
-
+var configs = {
   "conditions": [
     {
       "reference_type": "entity",
@@ -502,24 +531,36 @@ var config2 = {
   "dependencies": [
     {
       "entity_key": "department_id",
+      "section_id": "header", //
       "rules": [
         {
           "entity_key": "policy_id",
           "predicate": "eq",
-          "match_type": "value/formula",
-          "match_value": [""],
+          // "match_type": "value/formula",
+          "match_type": "value",
+          "match_value": 2,
           "match_formula": "{{}}",
           "choices": {
-            "partial": true,
-            "values": [
-              {
-                "id": 1,
-                "name": "Bangalore"
-              },
-              {
-                "id": 2,
-                "name": "Mumbai"
-              }
+            "partial": true, // What's this?
+            "choices": [ // Changed `values` to `choices`
+              {"id": 2, "name": "Tech"},
+              {"id": 4, "name": "Customer Success"}
+            ]
+          }
+        },
+        {
+          "entity_key": "policy_id",
+          "predicate": "eq",
+          // "match_type": "value/formula",
+          "match_type": "value",
+          "match_value": 3,
+          "match_formula": "{{}}",
+          "choices": {
+            "partial": true, // What's this?
+            "choices": [ // Changed `values` to `choices`
+              {"id": 1, "name": "Marketing"},
+              {"id": 3, "name": "Sales"},
+              {"id": 5, "name": "Business Development"},
             ]
           }
         }
@@ -1635,7 +1676,7 @@ var config = {
 ReactDOM.render(
   <React.StrictMode>
     {/* eslint-disable-next-line no-use-before-define */}
-    <App config={config3}/>
+    <App config={config3} d={configs}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

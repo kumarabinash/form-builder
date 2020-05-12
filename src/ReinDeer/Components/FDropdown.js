@@ -3,7 +3,9 @@ import React from "react";
 
 function FDropdown(props){
   let item = props.config;
-  let choices = (item.choices && props.config.choices.choices && props.config.choices.choices.length && props.config.choices.choices) || [];
+  // let choices = (item.choices && props.config.choices.choices && props.config.choices.choices.length && props.config.choices.choices) || [];
+  let choices = props?.config?.choices?.scoped_choices?.length ?
+    props?.config?.choices?.scoped_choices : props?.config?.choices?.choices.length ? props?.config?.choices?.choices : [];
   return(
     <Select
       showSearch

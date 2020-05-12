@@ -10,7 +10,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <Trips config={props.config} />
+      <Trips config={props.config} d={props.d}/>
     </div>
   );
 }

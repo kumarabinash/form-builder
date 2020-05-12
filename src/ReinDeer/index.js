@@ -30,23 +30,106 @@ function Reindeer(props){
 
 //
 function updateData(section_name, key, value, event) {
-  console.log("Section Name", section_name, "key", key, "value", value);
-  console.log("State", this.state);
-  let section = Object.assign([], this.state[section_name]);
-  console.log("Section", section);
-  let item = findEntityFromSection(section, key);
+  let section = Object.assign([], this.state.config[section_name]);
+  let item = getEntity(section, key);
   item.value = value;
 
   this.setState({section_name: section}, () => {
-    if(item.dependent_entities && item.dependent_entities.length){
-      // const updateDependencies = ;
-      // updateDependencies(item.dependent_entities);
-      funcUpdateDependencies.bind(this)(value, item.dependent_entities)
-    }
+    updateDependencies.bind(this)();
   });
 }
 
+function updateDependencies(){
+  let dependencies = this.state.d.dependencies; //todo - Change d
+
+  dependencies.forEach((item) => {
+    let matched_rule,
+      section = Object.assign([], this.state.config[item.section_id]),
+      dependent_entity = getEntity(section, item.entity_key);
+
+    item.rules.forEach((rule) => {
+      // Handle for table
+      let entity = getEntity(this.state.config, rule.entity_key);
+
+      let entity_value = (entity.value || entity.default_value),
+        match_value = rule.match_value;
+
+      if(parseInt(match_value) === parseInt(entity_value)){
+
+        matched_rule = rule
+
+      }
+
+    });
+
+    if(matched_rule){
+
+      dependent_entity.choices.scoped_choices = Object.assign([], matched_rule.choices.choices)
+
+    } else {
+
+      if(Array.isArray(dependent_entity?.choices?.scoped_choices)){
+
+        dependent_entity.choices.scoped_choices.length = 0
+
+      } else {
+
+        dependent_entity.choices.scoped_choices = []
+      }
+    }
+
+    this.setState({section_name: section})
+  });
+}
+
+function conditionMatcher(rule, value){
+  let predicate = rule.predicate;
+
+  switch (predicate) {
+    case "eq":
+      break;
+    case "contains":
+      if(rule.match_value.map((item) => parseInt(item)).indexOf(parseInt(value))){
+        return true;
+      }
+      break;
+    default:
+      return false
+  }
+}
+
+function getEntity(data, field_key) {
+  if(data.hasOwnProperty('field_key') && data['field_key'] === field_key){
+    return data
+  }
+
+  if(data.hasOwnProperty('entities')){
+    let entities = Object.values(data['entities']);
+    // console.log("has propery", entities);
+    let entity;
+    for(let i = 0; i < entities.length; i++){
+      entity = getEntity(entities[i], field_key);
+      if(typeof entity === 'object' && entity !== undefined){
+        break
+      }
+    }
+    return entity;
+  } else if (Object.values(data).filter((item) => typeof item === 'object' && item !== null).length){
+    let entities = Object.values(data).filter((item) => typeof item === 'object' && item !== null);
+    let entity;
+    for(let i = 0; i < entities.length; i++){
+      entity = getEntity(entities[i], field_key);
+      if(typeof entity === 'object' && entity !== undefined){
+        break
+      }
+    }
+    return entity;
+  }
+}
+
+
 function findEntityFromSection(section, entity_key) {
+  debugger
   return Object.values(section.entities).filter((item) => item.field_key === entity_key)[0];
 }
 
