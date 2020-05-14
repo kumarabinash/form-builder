@@ -55,8 +55,6 @@ function FTable(props){
     },
   ];
 
-  console.log("Columns", columns);
-
   return(
     <>
       <Table

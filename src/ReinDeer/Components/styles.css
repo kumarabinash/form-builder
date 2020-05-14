@@ -1,0 +1,53 @@
+
+.tick {
+    animation: highlightGlowTick 1s;
+}
+
+.tock {
+    animation: highlightGlowTock 1s;
+}
+
+/*//Animations*/
+@keyframes highlightGlowTick {
+    0% {
+        background-color: rgba(255, 251, 140, 1.0)
+    }
+
+    25% {
+        background-color: rgba(255, 251, 140, 0.75)
+    }
+
+    50% {
+        background-color: rgba(255, 251, 140, 0.50)
+    }
+
+    75% {
+        background-color: rgba(255, 251, 140, 0.25)
+    }
+
+    100% {
+        background-color: rgba(255, 251, 140, 0)
+    }
+}
+
+@keyframes highlightGlowTock {
+    0% {
+        background-color: rgba(255, 251, 140, 1.0)
+    }
+
+    25% {
+        background-color: rgba(255, 251, 140, 0.75)
+    }
+
+    50% {
+        background-color: rgba(255, 251, 140, 0.50)
+    }
+
+    75% {
+        background-color: rgba(255, 251, 140, 0.25)
+    }
+
+    100% {
+        background-color: rgba(255, 251, 140, 0)
+    }
+}

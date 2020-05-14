@@ -2,6 +2,8 @@ import React from "react";
 import {Tooltip, Typography} from "antd";
 import {InfoCircleOutlined} from '@ant-design/icons';
 
+import "./styles.css";
+
 const { Text } = Typography;
 
 function FormGroupDecorator(props){
@@ -14,7 +16,7 @@ function FormGroupDecorator(props){
 
   if(decoratable_el_types.indexOf(item.field_type) > -1 && !props.table_layout){
     return(
-      <div className='form-group' style={{width: 250, display: 'inline-block', marginRight: 20, marginBottom: 10}}>
+      <div className={`form-group ${item.class_name ? item.class_name : ''}`} style={{width: 250, display: 'inline-block', marginRight: 20, marginBottom: 10}}>
         <label htmlFor="">
           {item.label} {item.required ? <Text type="danger">*</Text> : null}
 
@@ -31,6 +33,8 @@ function FormGroupDecorator(props){
             onChange={props.onChange}
             parent_context={props.parent_context}
           />
+
+          {item.error_message ? <Text type="danger">{item.error_message}</Text> : null}
 
         </label>
 

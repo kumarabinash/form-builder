@@ -3,22 +3,24 @@ import React from "react";
 
 function FDropdown(props){
   let item = props.config;
-  // let choices = (item.choices && props.config.choices.choices && props.config.choices.choices.length && props.config.choices.choices) || [];
-  let choices = props?.config?.choices?.scoped_choices?.length ?
-    props?.config?.choices?.scoped_choices : props?.config?.choices?.choices.length ? props?.config?.choices?.choices : [];
+  let behaviour = Object.assign({}, item.behaviour, item.conditional_behaviour || {});
+  let choices = item.choices?.scoped_choices?.length ?
+    item.choices?.scoped_choices : item.choices?.choices.length ? item.choices?.choices : [];
+
   return(
     <Select
       showSearch
-      placeholder="Search"
+      placeholder={item.placeholder}
       style={{ width: '250px' }}
       optionFilterProp="children"
       onChange={(value, event) =>
-        props.onChange('header', item.field_key, value, event)
+        props.onChange(item.section_id, item.field_key, value, event)
       }
       value={item.value || item.default_value}
       showArrow={true}
+      disabled={!behaviour.editable}
     >
-      {choices.map((choice) => {
+      {choices.map((choice, choice_index) => {
         return(
           <Select.Option value={choice.id}>
             {choice.name}
