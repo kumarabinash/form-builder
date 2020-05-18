@@ -16,13 +16,24 @@ export default function compute(){
   let computations = this.state.d.computations; // todo - change name d
   let engine = new Liquid();
 
-  computations.forEach((computation) => {
-    engine
-      .parseAndRender(computation.formula, this.state.form_data)
-      .then((result) => {
-        updateFormData
-          .bind(this)
-          (computation.entity_key, result)
-      });
+  let bundle = computations.map((computation, computation_key) => {
+    return {
+      promise: engine.parseAndRender(computation.formula, this.state.form_data),
+      computation: computation
+    }
+
+      // .then((result) => {
+      //   // updateFormData
+      //   //   .bind(this)
+      //   //   (computation.entity_key, result)
+      //   console.log("Result from promise", result);
+      //   bundle.push({result: result, computation: computation});
+      // });
+
+
   });
+
+  return bundle;
+
+
 }

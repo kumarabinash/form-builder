@@ -14,7 +14,7 @@
 
 
 import React from "react";
-import Reindeer from "../index";
+import {Reindeer} from "../index";
 
 function FCard(props){
   return(

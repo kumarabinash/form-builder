@@ -17,7 +17,52 @@ import COMPONENTS_MASTER from "./ComponentsMaster";
 // Functions
 import updateState from "./Helpers/updateState";
 
-function Reindeer(props){
+class ReindeerComponent extends React.Component{
+  constructor(props) {
+    super(props);
+    // this.state = {
+    //
+    // }
+  }
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return !!(typeof nextProps.config.render === 'undefined' || nextProps?.config.render);
+  }
+
+  render(){
+
+    // console.log("Reindeer Called for ", Object.keys(this.props.config.entities));
+
+    let parent_context = this.props.parent_context;
+    let items = Object.values(this.props.config.entities)
+      .sort((a, b) => a.position - b.position)
+      .filter((item) => item?.conditional_behaviour?.visible || item.behaviour?.visible);
+
+    return(
+      <>
+        {items.map((item, item_index) => {
+          let field_type = item.field_type;
+
+          let FormComponent = COMPONENTS_MASTER[field_type] || COMPONENTS_MASTER['text'];
+
+          return(
+            <FormGroupDecorator
+              config={item}
+              onChange={updateState.bind(parent_context)}
+              parent_context={parent_context}
+              component={FormComponent}
+              key={item_index}
+            />
+          )
+        })}
+      </>
+    )
+  }
+}
+
+function ReindeerFunctional(props){
+  // console.log("Reindeer Called for ", Object.keys(this.props.config.entities));
+
   let parent_context = props.parent_context;
   let items = Object.values(props.config.entities)
     .sort((a, b) => a.position - b.position)
@@ -36,6 +81,7 @@ function Reindeer(props){
             onChange={updateState.bind(parent_context)}
             parent_context={parent_context}
             component={FormComponent}
+            key={item_index}
           />
         )
       })}
@@ -43,4 +89,5 @@ function Reindeer(props){
   )
 }
 
-export default Reindeer;
+// export {ReindeerComponent as Reindeer};
+export {ReindeerFunctional as Reindeer};

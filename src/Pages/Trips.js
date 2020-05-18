@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Reindeer from "../ReinDeer";
+import {Reindeer} from "../ReinDeer";
 
 import {Col, Row} from "antd";
 
@@ -16,6 +16,7 @@ class Trips extends Component{
         conditions: {},
         data: {},
       },
+      data_update_render: true,
       config: {...props.config},
       d: {...props.d},
       form_data: {
@@ -43,6 +44,10 @@ class Trips extends Component{
 
   }
 
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return typeof nextState.data_update_render === 'undefined' || nextState.data_update_render;
+  }
+
   addBankAccount = () => {
     console.log("Will add bank Account");
   };
@@ -61,7 +66,7 @@ class Trips extends Component{
         {/* Calculation */}
         <Row>
           <Col span={16} style={{padding: 20}}>
-            {console.log("Calculation Rerendering")}
+            {/*{console.log("Calculation Rerendering")}*/}
             <h4>Header</h4>
             <Reindeer config={this.state.config.calculation} section_id={this.state.config.header.section_id} parent_context={this} />
           </Col>

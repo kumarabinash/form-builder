@@ -15,27 +15,33 @@ import {rootEntityValue, nestedEntityValue} from "./valueResolver";
 
 export default function validationHandler(){
   let validations = this.state.d.validations || []; //todo - Update where conditions are stored in state
-  let config = this.state.config; // Todo - change config location from state
+  // let config = this.state.config; // Todo - change config location from state
+  let bundle = [];
 
   validations.forEach((validation) => {
-    let section = Object.assign([], config[validation.section_id]),
-      reference_entity = getEntity(section, validation.entity_key);
+    // let section = Object.assign([], config[validation.section_id]),
+    //   reference_entity = getEntity(section, validation.entity_key);
 
     let matched = validation.rules.every((rule) => {
       let entity_value = rootEntityValue.bind(this)(rule.entity_key);
 
       return matcher(rule, entity_value);
     });
-    if(matched){
-      reference_entity['error_message'] = validation.error_message;
-    } else {
-      if(reference_entity?.error_message){
-        reference_entity.error_message = null;
-      }
-    }
 
-    this.setState({section_name: section})
+    bundle.push({matched: matched, validation: validation});
+
+    // if(matched){
+    //   reference_entity['error_message'] = validation.error_message;
+    // } else {
+    //   if(reference_entity?.error_message){
+    //     reference_entity.error_message = null;
+    //   }
+    // }
+
+    // this.setState({section_name: section})
   });
+
+  return bundle;
 }
 
 

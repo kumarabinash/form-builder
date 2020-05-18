@@ -6,7 +6,6 @@ function FDropdown(props){
   let behaviour = Object.assign({}, item.behaviour, item.conditional_behaviour || {});
   let choices = item.choices?.scoped_choices?.length ?
     item.choices?.scoped_choices : item.choices?.choices.length ? item.choices?.choices : [];
-  debugger
   return(
     <Select
       showSearch
@@ -23,7 +22,7 @@ function FDropdown(props){
     >
       {choices.map((choice, choice_index) => {
         return(
-          <Select.Option value={choice.id}>
+          <Select.Option value={choice.id} key={choice_index}>
             {choice.name}
           </Select.Option>
         )

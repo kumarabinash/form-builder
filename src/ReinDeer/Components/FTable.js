@@ -12,12 +12,12 @@
 
 
 import React from "react";
-import Reindeer from "../index";
+import {Reindeer} from "../index";
 
 import {Table} from 'antd';
 
 function FTable(props){
-  console.log("Props");
+  // console.log("Rendering  Table");
   // let table_headers = Object.values(props.config.entities).map((item) => item.label);
   let config_entities = Object.values(props.config.entities);
   // debugger
@@ -35,7 +35,7 @@ function FTable(props){
         key: item.entity_key,
         fixed: ((key === 0) ? 'left' : ((config_entities.length - 1) === key) ? 'right' : null),
         width: 250,
-        render: () => <Reindeer config={render_item} parent_context={props.parent_context} table_layout={true} />
+        render: () => <Reindeer config={render_item} parent_context={props.parent_context} table_layout={true} key={key}/>
       }
     )
   });

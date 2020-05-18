@@ -18,6 +18,8 @@ import {createDraft, finishDraft} from "immer";
 
 export default function dependenciesHandler(){
   let dependencies = this.state.d.dependencies; //todo - Change d
+
+  let bundle = [];
   dependencies.forEach((dependency) => {
     let matched_rule,
       path = dependency.entity_path;
@@ -34,24 +36,32 @@ export default function dependenciesHandler(){
     });
 
     // Create draft
-    const draft = createDraft(this.state);
+    // const draft = createDraft(this.state);
+    //
+    // // Modify draft
+    // let draft_entity = getEntityWithPath(draft.config, path); // todo - update config name
+    // let updated;
+    //
+    // if(matched_rule && draft_entity.updated){
+    //   draft_entity.choices.scoped_choices = Object.assign([], matched_rule.choices.choices);
+    //   updated = true;
+    // } else {
+    //   if(Array.isArray(draft_entity?.choices?.scoped_choices) && draft_entity?.choices?.scoped_choices?.length){
+    //     draft_entity.choices.scoped_choices.length = 0
+    //   } else {
+    //     draft_entity.choices.scoped_choices = []
+    //   }
+    // }
+    bundle.push({rule: matched_rule, entity_path: path});
 
-    // Modify draft
-    let draft_entity = getEntityWithPath(draft.config, path); // todo - update config name
 
-    if(matched_rule){
-      draft_entity.choices.scoped_choices = Object.assign([], matched_rule.choices.choices)
-    } else {
-      if(Array.isArray(draft_entity?.choices?.scoped_choices)){
-        draft_entity.choices.scoped_choices.length = 0
-      } else {
-        draft_entity.choices.scoped_choices = []
-      }
-    }
 
     // Finish Draft
-    const newState = finishDraft(draft);
+    // const newState = finishDraft(draft);
+    //
+    // this.setState(newState);
 
-    this.setState(newState);
   });
+
+  return bundle
 }

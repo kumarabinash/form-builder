@@ -18,30 +18,36 @@ export default function conditionalHandler(){
   let conditions = this.state.d.conditions || []; //todo - Update where conditions are stored in state
   let config = this.state.config; // Todo - change config location from state
 
+  let bundle = [];
+
   conditions.forEach((condition) => {
     let section = Object.assign([], config[condition.section_id]),
       reference_entity = getEntity(section, condition.reference_key);
 
     let matched = condition.rules.every((rule) => {
       // let entity = getEntity(config, rule.entity_key);
-      let entity_value = rootEntityValue.bind(this)(rule.entity_key)
+      let entity_value = rootEntityValue.bind(this)(rule.entity_key);
       return matcher(rule, entity_value);
     });
 
-    if(matched){
+    bundle.push({matched: matched, condition: condition});
 
-      reference_entity['conditional_behaviour'] = condition.actions.reduce(function(acc, action) {
-        acc[action.property] = action.value;
-        return acc;
-      }, {});
+    // if(matched){
+    //
+    //   reference_entity['conditional_behaviour'] = condition.actions.reduce(function(acc, action) {
+    //     acc[action.property] = action.value;
+    //     return acc;
+    //   }, {});
+    //
+    // } else {
+    //   delete reference_entity.conditional_behaviour
+    // }
 
-    } else {
-      delete reference_entity.conditional_behaviour
-    }
 
-
-    this.setState({section_name: section})
+    // this.setState({section_name: section})
   });
+
+  return bundle;
 }
 
 
