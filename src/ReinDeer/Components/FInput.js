@@ -9,11 +9,11 @@ function FInput(props){
       type="text"
       autoComplete="off"
       className="form-control"
-      id={`${item.section_id}-{item.field_key`}
-      value={item.value || item.default_value}
+      id={`${item.section_id}-{item.entity_key`}
+      value={props.value}
       readOnly={!behaviour.editable}
       onChange={(ev) => {
-        props.onChange(item.section_id, item.field_key, ev.target.value, ev)
+        props.onChange(item.section_id, item.entity_key, ev.target.value, ev)
       }}
       maxLength={item.options && item.options.char_limit}
       placeholder={item.placeholder}

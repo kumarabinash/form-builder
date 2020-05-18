@@ -2,6 +2,8 @@ import React from "react";
 import {Tooltip, Typography} from "antd";
 import {InfoCircleOutlined} from '@ant-design/icons';
 
+import {rootEntityValue} from "../Helpers/valueResolver";
+
 import "./styles.css";
 
 const { Text } = Typography;
@@ -15,6 +17,7 @@ function FormGroupDecorator(props){
   let Component = props.component;
 
   if(decoratable_el_types.indexOf(item.field_type) > -1 && !props.table_layout){
+    let value = rootEntityValue.bind(props.parent_context)(item.entity_key);
     return(
       <div className={`form-group ${item.class_name ? item.class_name : ''}`} style={{width: 250, display: 'inline-block', marginRight: 20, marginBottom: 10}}>
         <label htmlFor="">
@@ -30,6 +33,7 @@ function FormGroupDecorator(props){
 
           <Component
             config={item}
+            value={value}
             onChange={props.onChange}
             parent_context={props.parent_context}
           />

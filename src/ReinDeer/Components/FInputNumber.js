@@ -11,7 +11,7 @@ function FInputNumber(props){
       className="form-control"
       id="businessName"
       onChange={(value, event) =>
-        props.onChange('passengers', item.field_key, value, event)
+        props.onChange('passengers', item.entity_key, value, event)
       }
       value={item.value}
       readOnly={!item.editable}

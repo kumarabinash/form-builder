@@ -11,9 +11,9 @@ var config3 = {
     "title": "Vendor Details",
     "entities": {
       "vendor_id": {
-        "id": "B7B74A50-9038-11EA-950D-8C8590BE5FB3",
         "section_id": "header",
-        "field_key": "vendor_id",
+        "entity_key": "vendor_id",
+        "path": "header/entities/vendor_id",
         "label": "Vendor",
         "placeholder": "Enter value",
         "hint": "Select option",
@@ -40,7 +40,8 @@ var config3 = {
       "status_id": {
         "id": "B7BA674E-9038-11EA-950D-8C8590BE5FB3",
         "section_id": "header",
-        "field_key": "status_id",
+        "entity_key": "status_id",
+        "path": "header/entities/status_id",
         "label": "Status",
         "placeholder": "Enter value",
         "hint": "Select value",
@@ -78,7 +79,8 @@ var config3 = {
       "policy_id": {
         "id": "B7BB9434-9038-11EA-950D-8C8590BE5FB3",
         "section_id": "header",
-        "field_key": "policy_id",
+        "entity_key": "policy_id",
+        "path": "header/entities/policy_id",
         "label": "Policy",
         "placeholder": "Enter value",
         "hint": "Select value",
@@ -117,7 +119,8 @@ var config3 = {
       "department_id": {
         "id": "B7BB9434-9038-11EA-950D-8C8590BE5FB3",
         "section_id": "header",
-        "field_key": "department_id",
+        "entity_key": "department_id",
+        "path": "header/entities/department_id",
         "label": "Department",
         "placeholder": "Enter value",
         "hint": "Select value",
@@ -158,7 +161,8 @@ var config3 = {
       "legal_name": {
         "id": "B7BD9CDE-9038-11EA-950D-8C8590BE5FB3",
         "section_id": "header",
-        "field_key": "legal_name",
+        "entity_key": "legal_name",
+        "path": "header/entities/legal_name",
         "label": "Legal name",
         "placeholder": "Enter value",
         "hint": "Enter value",
@@ -181,13 +185,86 @@ var config3 = {
       }
     }
   },
+
+  "calculation": {
+    "section_id": "calculation",
+    "title": "Calculation Test",
+    "entities": {
+      "calc_rate": {
+        "id": "B7B74A50-9038-11EA-950D-8C8590BE5FB3",
+        "section_id": "calculation",
+        "entity_key": "calc_rate",
+        "path": "header/entities/vendor_id",
+        "label": "Rate",
+        "placeholder": "Enter value",
+        "hint": "Rate",
+        "field_type": "text",
+        "default_value": null,
+        "value": "",
+        "width": "standard",
+        "behaviour": {
+          "editable": true,
+          "required": true,
+          "active": true,
+          "visible": true,
+        },
+        "unique": false,
+        "position": 0,
+        "custom_field": false
+      },
+      "calc_quantity": {
+        "id": "B7BA674E-9038-11EA-950D-8C8590BE5FB3",
+        "section_id": "calculation",
+        "entity_key": "calc_quantity",
+        "path": "calculation/entities/calc_quantity",
+        "label": "Quantity",
+        "placeholder": "Enter value",
+        "hint": "Select value",
+        "field_type": "text",
+        "default_value": null,
+        "value": "",
+        "width": "standard",
+        "behaviour": {
+          "editable": true,
+          "required": true,
+          "active": true,
+          "visible": true,
+        },
+        "unique": false,
+        "position": 1,
+        "custom_field": false,
+      },
+      "total": {
+        "id": "B7BB9434-9038-11EA-950D-8C8590BE5FB3",
+        "section_id": "calculation",
+        "entity_key": "total",
+        "path": "calculation/entities/total",
+        "label": "Total",
+        "placeholder": "Auto Calculated Value",
+        "hint": "Select value",
+        "field_type": "text",
+        "default_value": null,
+        "value": "",
+        "width": "standard",
+        "behaviour": {
+          "editable": false,
+          "required": true,
+          "active": true,
+          "visible": true,
+        },
+        "unique": false,
+        "position": 2,
+        "custom_field": false
+      }
+    }
+  },
   "bank_accounts": {
     "section_id": "bank_accounts",
     "title": "Bank Accounts",
     "entities": {
       "bank_account": {
         "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB4",
-        "field_key": "locations",
+        "entity_key": "locations",
         "label": "Locations",
         "placeholder": "Enter value",
         "hint": null,
@@ -210,7 +287,7 @@ var config3 = {
         "entities": {
           "name": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB5",
-            "field_key": "account_name",
+            "entity_key": "account_name",
             "label": "Account Name",
             "placeholder": "Enter value",
             "hint": null,
@@ -233,7 +310,7 @@ var config3 = {
           },
           "account_number": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB6",
-            "field_key": "account_number",
+            "entity_key": "account_number",
             "label": "Account Number",
             "placeholder": "Enter value",
             "hint": null,
@@ -256,7 +333,7 @@ var config3 = {
           },
           "ifsc": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "ifsc",
+            "entity_key": "ifsc",
             "label": "IFSC",
             "placeholder": "Enter value",
             "hint": null,
@@ -288,14 +365,17 @@ var config3 = {
     "entities": {
       "line_items": {
         "id": "B7C157D4-9038-11EA-950D-8C8590BE28393",
-        "field_key": "line_items",
+        "entity_key": "line_items",
         "label": "Line Items",
         "field_type": "table",
-        "visible": true,
+        "behaviour": {
+          "editable": false,
+          "visible": true,
+        },
         "entities": {
-          "item": {
+          "item_master_item_id": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "item_master_item",
+            "entity_key": "item_master_item_id",
             "label": "Item",
             "placeholder": "Enter value",
             "hint": null,
@@ -318,7 +398,7 @@ var config3 = {
           },
           "rate": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "line_item_rate",
+            "entity_key": "rate",
             "label": "Rate",
             "placeholder": "Enter value",
             "hint": null,
@@ -341,7 +421,7 @@ var config3 = {
           },
           "quantity": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "line_item_qty",
+            "entity_key": "quantity",
             "label": "Quantity",
             "placeholder": "Enter value",
             "hint": null,
@@ -364,7 +444,7 @@ var config3 = {
           },
           "discount": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "line_item_discount",
+            "entity_key": "discount",
             "label": "Discount",
             "placeholder": "Enter value",
             "hint": null,
@@ -387,7 +467,7 @@ var config3 = {
           },
           "tax_rate": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "line_item_tax_rate",
+            "entity_key": "tax_rate",
             "label": "Tax Rate",
             "placeholder": "Enter value",
             "hint": null,
@@ -418,7 +498,7 @@ var config3 = {
           },
           "tax_value": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "line_item_tax_value",
+            "entity_key": "tax_value",
             "label": "Tax Value",
             "placeholder": "Enter value",
             "hint": null,
@@ -439,9 +519,9 @@ var config3 = {
               "min_items": 1
             }
           },
-          "tax_type": {
+          "tax_type_id": {
             "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB7",
-            "field_key": "line_item_tax_type",
+            "entity_key": "tax_type_id",
             "label": "Tax Type",
             "placeholder": "Enter value",
             "hint": null,
@@ -463,88 +543,12 @@ var config3 = {
             }
           }
 
-        }
+        },
+        "row_configs": [
+
+        ]
       }
     },
-  },
-
-  "locations": {
-    "section_id": "locations",
-    "title": null,
-    "entities": {
-      "locations": {
-        "id": "B7C157D4-9038-11EA-950D-8C8590BE5FB3",
-        "field_key": "locations",
-        "label": "Locations",
-        "placeholder": "Enter value",
-        "hint": null,
-        "field_type": "data_map",
-        "default_value": null,
-        "width": "standard",
-        "behaviour": {
-          "editable": true,
-          "required": true,
-          "active": true,
-          "visible": true,
-        },
-        "unique": false,
-        "position": 0,
-        "custom_field": false,
-        "options": {
-          "min_items": 1
-        }
-      },
-      "locations/name": {
-        "id": "B7C30DC2-9038-11EA-950D-8C8590BE5FB3",
-        "field_key": "name",
-        "label": "Name",
-        "placeholder": "Enter value",
-        "hint": "Enter value",
-        "field_type": "text",
-        "default_value": null,
-        "width": "standard",
-        "behaviour": {
-          "editable": true,
-          "required": true,
-          "active": true,
-          "visible": true,
-        },
-        "unique": false,
-        "position": 0,
-        "custom_field": false,
-        "options": {
-          "char_limit": 255
-        }
-      },
-      "locations/state_id": {
-        "id": "B7C43FEE-9038-11EA-950D-8C8590BE5FB3",
-        "field_key": "state_id",
-        "label": "State",
-        "placeholder": "Enter value",
-        "hint": "Select value",
-        "field_type": "dropdown",
-        "default_value": null,
-        "width": "standard",
-        "behaviour": {
-          "editable": true,
-          "required": true,
-          "active": true,
-          "visible": true,
-        },
-        "unique": false,
-        "position": 1,
-        "custom_field": false,
-        "options": {},
-        "choices": {
-          "type": "enum",
-          "config": {
-            "enum": "GstStateCode",
-            "id": "id",
-            "name": "name"
-          }
-        }
-      }
-    }
   }
 };
 
@@ -558,7 +562,7 @@ var configs = {
         {
           "entity_key": "status_id",
           "predicate": "not_in",
-          "match_type": "value",
+          "match_type": "value", //"value", "formula", "entity"
           "match_value": [1, 3, 4],
           "match_formula": "{{}}",
           "match_entity_key": "invoice_date"
@@ -592,6 +596,7 @@ var configs = {
   "dependencies": [
     {
       "entity_key": "department_id",
+      "entity_path": "header/entities/department_id",
       "section_id": "header", //
       "rules": [
         {
@@ -627,14 +632,22 @@ var configs = {
         }
       ]
     }
+  ],
+  "computations": [
+    {
+      "entity_key": "total",
+      "section_id": "calculation",
+      "formula": "{{calc_rate | times: calc_quantity}}",
+    }
   ]
+
 };
 
 var config = {
   "header": [
     {
       "id": "A9876E28-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "trip_id",
+      "entity_key": "trip_id",
       "label": "Trip",
       "placeholder": "Enter value",
       "hint": "Select option",
@@ -656,7 +669,7 @@ var config = {
     },
     {
       "id": "A98A5CB4-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "created_by",
+      "entity_key": "created_by",
       "label": "Created by",
       "placeholder": "Enter value",
       "hint": "Select value",
@@ -674,7 +687,7 @@ var config = {
     },
     {
       "id": "A98CD728-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "company",
+      "entity_key": "company",
       "label": "Company",
       "placeholder": "Enter value",
       "hint": "Select value",
@@ -691,7 +704,7 @@ var config = {
     },
     {
       "id": "A994F07A-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "trip_type_id",
+      "entity_key": "trip_type_id",
       "label": "Trip type",
       "placeholder": "Enter value",
       "hint": "Select value",
@@ -725,7 +738,7 @@ var config = {
     },
     {
       "id": "A997FA0E-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "policy_id",
+      "entity_key": "policy_id",
       "label": "Policy",
       "placeholder": "Enter value",
       "hint": "Select A Policy",
@@ -808,7 +821,7 @@ var config = {
     },
     {
       "id": "A98ED654-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "status_id",
+      "entity_key": "status_id",
       "label": "Status",
       "placeholder": "Enter value",
       "hint": "Select value",
@@ -867,7 +880,7 @@ var config = {
     },
     {
       "id": "A9A6BC9C-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "start_date",
+      "entity_key": "start_date",
       "label": "Start date",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -884,7 +897,7 @@ var config = {
     },
     {
       "id": "A9A900D8-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "end_date",
+      "entity_key": "end_date",
       "label": "End date",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -901,7 +914,7 @@ var config = {
     },
     {
       "id": "A9B45FE6-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "purpose",
+      "entity_key": "purpose",
       "label": "Purpose /w Char Limit",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -922,7 +935,7 @@ var config = {
   "passengers": [
     {
       "id": "A9C51FE8-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "passengers",
+      "entity_key": "passengers",
       "label": "Passengers",
       "placeholder": "Enter value",
       "hint": null,
@@ -941,7 +954,7 @@ var config = {
     },
     {
       "id": "A9C69FD0-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "name",
+      "entity_key": "name",
       "label": "Name",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -960,7 +973,7 @@ var config = {
     },
     {
       "id": "A9D14DEA-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "contact_number",
+      "entity_key": "contact_number",
       "label": "Contact number",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -979,7 +992,7 @@ var config = {
     },
     {
       "id": "AA117F50-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "email",
+      "entity_key": "email",
       "label": "Email",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1000,7 +1013,7 @@ var config = {
   "routes": [
     {
       "id": "AA14CE58-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "routes",
+      "entity_key": "routes",
       "label": "Routes",
       "placeholder": "Enter value",
       "hint": null,
@@ -1019,7 +1032,7 @@ var config = {
     },
     {
       "id": "AA16B39E-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "from_location",
+      "entity_key": "from_location",
       "label": "From location",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1038,7 +1051,7 @@ var config = {
     },
     {
       "id": "AA1C53EE-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "to_location",
+      "entity_key": "to_location",
       "label": "To location",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1057,7 +1070,7 @@ var config = {
     },
     {
       "id": "AA1D9DDA-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "depart_on",
+      "entity_key": "depart_on",
       "label": "Depart on",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -1074,7 +1087,7 @@ var config = {
     },
     {
       "id": "AA1FDE7E-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "return_on",
+      "entity_key": "return_on",
       "label": "Return on",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -1091,7 +1104,7 @@ var config = {
     },
     {
       "id": "AA28E424-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "require_transport",
+      "entity_key": "require_transport",
       "label": "Require transport",
       "placeholder": "Enter value",
       "hint": null,
@@ -1121,7 +1134,7 @@ var config = {
     },
     {
       "id": "AA3A772A-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "require_hotel",
+      "entity_key": "require_hotel",
       "label": "Require hotel",
       "placeholder": "Enter value",
       "hint": null,
@@ -1151,7 +1164,7 @@ var config = {
     },
     {
       "id": "AA4B6094-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "require_local_conveyance",
+      "entity_key": "require_local_conveyance",
       "label": "Require local conveyance",
       "placeholder": "Enter value",
       "hint": null,
@@ -1183,7 +1196,7 @@ var config = {
   "transport_requests": [
     {
       "id": "AA6E86C8-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "transport_requests",
+      "entity_key": "transport_requests",
       "label": "Transport requests",
       "placeholder": "Enter value",
       "hint": null,
@@ -1200,7 +1213,7 @@ var config = {
     },
     {
       "id": "AA72A550-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "from_location",
+      "entity_key": "from_location",
       "label": "From location",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1219,7 +1232,7 @@ var config = {
     },
     {
       "id": "AA7E8848-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "to_location",
+      "entity_key": "to_location",
       "label": "To location",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1238,7 +1251,7 @@ var config = {
     },
     {
       "id": "AA81AC26-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "mode",
+      "entity_key": "mode",
       "label": "Mode",
       "placeholder": "Enter value",
       "hint": "Select value",
@@ -1264,7 +1277,7 @@ var config = {
     },
     {
       "id": "AA8B81E2-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "depart_on",
+      "entity_key": "depart_on",
       "label": "Depart on",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -1281,7 +1294,7 @@ var config = {
     },
     {
       "id": "AA8E9D14-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "preferred_timeframe",
+      "entity_key": "preferred_timeframe",
       "label": "Preferred timeframe",
       "placeholder": "Enter value",
       "hint": "Select value",
@@ -1335,7 +1348,7 @@ var config = {
     },
     {
       "id": "AA9DBFBA-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "budget",
+      "entity_key": "budget",
       "label": "Budget",
       "placeholder": "Enter value",
       "hint": "Amount",
@@ -1352,7 +1365,7 @@ var config = {
     },
     {
       "id": "AAA46F4A-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "value",
+      "entity_key": "value",
       "label": "Value",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1371,7 +1384,7 @@ var config = {
     },
     {
       "id": "AAA5769C-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "currency_id",
+      "entity_key": "currency_id",
       "label": "Currency",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1388,7 +1401,7 @@ var config = {
     },
     {
       "id": "AAA6BE1C-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "description",
+      "entity_key": "description",
       "label": "Description",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1409,7 +1422,7 @@ var config = {
   "hotel_requests": [
     {
       "id": "AAB34952-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "hotel_requests",
+      "entity_key": "hotel_requests",
       "label": "Hotel requests",
       "placeholder": "Enter value",
       "hint": null,
@@ -1426,7 +1439,7 @@ var config = {
     },
     {
       "id": "AABEC9C6-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "location",
+      "entity_key": "location",
       "label": "Location",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1445,7 +1458,7 @@ var config = {
     },
     {
       "id": "AAC1FF42-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "preferred_area",
+      "entity_key": "preferred_area",
       "label": "Preferred area",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1464,7 +1477,7 @@ var config = {
     },
     {
       "id": "AAC7AAA0-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "checkin_at",
+      "entity_key": "checkin_at",
       "label": "Checkin at",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -1481,7 +1494,7 @@ var config = {
     },
     {
       "id": "AAC8CE08-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "checkout_at",
+      "entity_key": "checkout_at",
       "label": "Checkout at",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -1498,7 +1511,7 @@ var config = {
     },
     {
       "id": "AAD1BB4E-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "budget",
+      "entity_key": "budget",
       "label": "Budget",
       "placeholder": "Enter value",
       "hint": "Amount",
@@ -1515,7 +1528,7 @@ var config = {
     },
     {
       "id": "AAD312D2-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "value",
+      "entity_key": "value",
       "label": "Value",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1534,7 +1547,7 @@ var config = {
     },
     {
       "id": "AADE0B56-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "currency_id",
+      "entity_key": "currency_id",
       "label": "Currency",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1551,7 +1564,7 @@ var config = {
     },
     {
       "id": "AAE56C2A-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "description",
+      "entity_key": "description",
       "label": "Description",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1572,7 +1585,7 @@ var config = {
   "local_conveyance_requests": [
     {
       "id": "AAEF1C70-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "local_conveyance_requests",
+      "entity_key": "local_conveyance_requests",
       "label": "Local conveyance requests",
       "placeholder": "Enter value",
       "hint": null,
@@ -1589,7 +1602,7 @@ var config = {
     },
     {
       "id": "AAF15062-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "location",
+      "entity_key": "location",
       "label": "Location",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1608,7 +1621,7 @@ var config = {
     },
     {
       "id": "AAF7AA34-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "pickup_area",
+      "entity_key": "pickup_area",
       "label": "Pickup area",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1627,7 +1640,7 @@ var config = {
     },
     {
       "id": "AAF9663A-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "pickup_at",
+      "entity_key": "pickup_at",
       "label": "Pickup at",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -1644,7 +1657,7 @@ var config = {
     },
     {
       "id": "AAFB2C4A-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "drop_at",
+      "entity_key": "drop_at",
       "label": "Drop at",
       "placeholder": "Enter value",
       "hint": "Select date and time",
@@ -1661,7 +1674,7 @@ var config = {
     },
     {
       "id": "AB04A018-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "budget",
+      "entity_key": "budget",
       "label": "Budget",
       "placeholder": "Enter value",
       "hint": "Amount",
@@ -1678,7 +1691,7 @@ var config = {
     },
     {
       "id": "AB05EDE2-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "value",
+      "entity_key": "value",
       "label": "Value",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1697,7 +1710,7 @@ var config = {
     },
     {
       "id": "AB2E67FE-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "currency_id",
+      "entity_key": "currency_id",
       "label": "Currency",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1714,7 +1727,7 @@ var config = {
     },
     {
       "id": "AB35CDBE-7342-11EA-983A-8C8590BE5FB3",
-      "field_key": "description",
+      "entity_key": "description",
       "label": "Description",
       "placeholder": "Enter value",
       "hint": "Enter value",
@@ -1746,3 +1759,29 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

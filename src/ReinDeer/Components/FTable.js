@@ -1,22 +1,38 @@
+/**
+ * Renders a table with given config, handle columns,
+ *   Finds any computation logic found in config
+ *   Computes & Updates new value
+ *
+ * @author: kumar.abinash@finly.io
+ * @todo
+ *   - Handle Array Data Updation
+ * @returns {boolean} - success as true or false
+ */
+
+
+
 import React from "react";
 import Reindeer from "../index";
-import COMPONENTS_MASTER from "../ComponentsMaster";
 
-import {Table, Input} from 'antd';
+import {Table} from 'antd';
 
 function FTable(props){
+  console.log("Props");
   // let table_headers = Object.values(props.config.entities).map((item) => item.label);
   let config_entities = Object.values(props.config.entities);
+  // debugger
   let columns = config_entities.map((item, key) => {
     item.table_view = true;
     let render_item = {entities: {}};
-    render_item.entities[`${item.field_key}`] = item;
+    render_item.entities[`${item.entity_key}`] = item;
+
+    // debugger;
 
     return(
       {
         title: item.label,
-        dataIndex: item.field_key,
-        key: item.field_key,
+        dataIndex: item.entity_key,
+        key: item.entity_key,
         fixed: ((key === 0) ? 'left' : ((config_entities.length - 1) === key) ? 'right' : null),
         width: 250,
         render: () => <Reindeer config={render_item} parent_context={props.parent_context} table_layout={true} />

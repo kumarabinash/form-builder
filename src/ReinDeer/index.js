@@ -1,12 +1,13 @@
 /**
- * Finds form-entity from given forms-entity-config
+ * Renders Component(s) based on given config. Recursively renders nested Component(s) if any
  *
  * @author: kumar.abinash@finly.io
- * @param {object} data - form-entity-config
+ * @param {object} props - form-entity-config
  * @todo
- *   - Right now it updates the dependencies one after the other in the state, can be combined together to update state at once
+ *   - Right now it updates the dependencies one after the other in the state, can be combined together to update state at onc
+ *   - After rendering run all computations, validations, conditions, dependenciess
  *
- * @returns
+ * @returns array of React Components inside a React Fragment
  */
 
 import React from 'react';
@@ -14,9 +15,6 @@ import FormGroupDecorator from "./Components/FormGroupDecorator";
 import COMPONENTS_MASTER from "./ComponentsMaster";
 
 // Functions
-// import getEntity from "./Helpers/getEntity";
-// import dependenciesHandler from "./Helpers/dependenciesHandler";
-// import conditionalHandler from "./Helpers/conditionalHandler";
 import updateState from "./Helpers/updateState";
 
 function Reindeer(props){
@@ -44,9 +42,5 @@ function Reindeer(props){
     </>
   )
 }
-
-//
-
-
 
 export default Reindeer;

@@ -12,6 +12,7 @@
 
 import getEntity from "./getEntity";
 import matcher from "./matcher";
+import {rootEntityValue, nestedEntityValue} from "./valueResolver";
 
 export default function conditionalHandler(){
   let conditions = this.state.d.conditions || []; //todo - Update where conditions are stored in state
@@ -22,8 +23,9 @@ export default function conditionalHandler(){
       reference_entity = getEntity(section, condition.reference_key);
 
     let matched = condition.rules.every((rule) => {
-      let entity = getEntity(config, rule.entity_key);
-      return matcher(rule, entity);
+      // let entity = getEntity(config, rule.entity_key);
+      let entity_value = rootEntityValue.bind(this)(rule.entity_key)
+      return matcher(rule, entity_value);
     });
 
     if(matched){

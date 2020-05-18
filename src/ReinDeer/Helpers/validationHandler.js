@@ -11,6 +11,7 @@
 
 import getEntity from "./getEntity";
 import matcher from "./matcher";
+import {rootEntityValue, nestedEntityValue} from "./valueResolver";
 
 export default function validationHandler(){
   let validations = this.state.d.validations || []; //todo - Update where conditions are stored in state
@@ -21,8 +22,9 @@ export default function validationHandler(){
       reference_entity = getEntity(section, validation.entity_key);
 
     let matched = validation.rules.every((rule) => {
-      let entity = getEntity(config, rule.entity_key);
-      return matcher(rule, entity);
+      let entity_value = rootEntityValue.bind(this)(rule.entity_key);
+
+      return matcher(rule, entity_value);
     });
     if(matched){
       reference_entity['error_message'] = validation.error_message;

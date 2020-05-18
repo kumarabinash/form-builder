@@ -1,3 +1,18 @@
+/**
+ * Generic Card Component
+ *
+ * @constructor
+ * @author: kumar.abinash@finly.io
+ * @param {object} data - form-entity-config
+ * @todo
+ *   - Expose APIs for
+ *    - Remove Card
+ *    - Style
+ */
+
+
+
+
 import React from "react";
 import Reindeer from "../index";
 

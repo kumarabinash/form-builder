@@ -6,17 +6,18 @@ function FDropdown(props){
   let behaviour = Object.assign({}, item.behaviour, item.conditional_behaviour || {});
   let choices = item.choices?.scoped_choices?.length ?
     item.choices?.scoped_choices : item.choices?.choices.length ? item.choices?.choices : [];
-
+  debugger
   return(
     <Select
       showSearch
       placeholder={item.placeholder}
       style={{ width: '250px' }}
       optionFilterProp="children"
+      defaultValue={props.value}
       onChange={(value, event) =>
-        props.onChange(item.section_id, item.field_key, value, event)
+        props.onChange(item.section_id, item.entity_key, value, event)
       }
-      value={item.value || item.default_value}
+      // value={item.value || item.default_value}
       showArrow={true}
       disabled={!behaviour.editable}
     >

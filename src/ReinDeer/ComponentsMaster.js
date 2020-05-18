@@ -1,3 +1,11 @@
+/**
+ * Maps field types to components
+ *
+ * @author: kumar.abinash@finly.io
+ *
+ * @returns an object map of
+ */
+
 import FInput from "./Components/FInput";
 import FInputNumber from "./Components/FInputNumber";
 import FDropdown from "./Components/FDropdown";

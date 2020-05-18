@@ -11,15 +11,15 @@
  */
 
 
-export default function getEntity(data, field_key) {
-  if(data.hasOwnProperty('field_key') && data['field_key'] === field_key){
+export default function getEntity(data, entity_key) {
+  if(data.hasOwnProperty('entity_key') && data['entity_key'] === entity_key){
     return data
   }
 
   if(data.hasOwnProperty('entities')){
     let entities = Object.values(data['entities']), entity;
     for(let i = 0; i < entities.length; i++){
-      entity = getEntity(entities[i], field_key);
+      entity = getEntity(entities[i], entity_key);
       if(typeof entity === 'object' && entity !== undefined){
         break
       }
@@ -29,7 +29,7 @@ export default function getEntity(data, field_key) {
     let entities = Object.values(data).filter((item) => typeof item === 'object' && item !== null);
     let entity;
     for(let i = 0; i < entities.length; i++){
-      entity = getEntity(entities[i], field_key);
+      entity = getEntity(entities[i], entity_key);
       if(typeof entity === 'object' && entity !== undefined){
         break
       }
@@ -37,3 +37,12 @@ export default function getEntity(data, field_key) {
     return entity;
   }
 }
+
+function getEntityWithPath(config, path){
+  return path.split("/").reduce((acc, shard) => {
+    return acc[shard];
+  }, config);
+}
+
+
+export {getEntityWithPath};

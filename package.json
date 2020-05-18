@@ -9,8 +9,12 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.0.4",
     "handsontable": "^7.4.2",
+    "immer": "^6.0.5",
+    "liquidjs": "^9.11.11",
     "react": "^16.13.1",
+    "react-addons-perf": "^15.4.2",
     "react-dom": "^16.13.1",
+    "react-resizable": "^1.10.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {

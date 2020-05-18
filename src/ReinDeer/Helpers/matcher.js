@@ -1,6 +1,6 @@
 
 
-export default function matcher(rule, entity){
+export default function matcher(rule, entity_value){
   let predicate = rule.predicate,
     match_type = rule.match_type;
 
@@ -12,7 +12,7 @@ export default function matcher(rule, entity){
     case "gteq":
       switch(match_type){
         case "value":
-          if(match_value === entity.value){
+          if(match_value === entity_value){
             return true
           }
           break;
@@ -23,7 +23,7 @@ export default function matcher(rule, entity){
     case "not_in":
       switch (match_type) {
         case "value":
-          if(match_value.indexOf(entity.value || entity.default_value) === -1){
+          if(match_value.indexOf(entity_value) === -1){
             return true
           }
           break;
