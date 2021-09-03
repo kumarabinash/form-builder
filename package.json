@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.0.4",
     "handsontable": "^7.4.2",
-    "immer": "^6.0.5",
+    "immer": "^9.0.6",
     "liquidjs": "^9.11.11",
     "react": "^16.13.1",
     "react-addons-perf": "^15.4.2",
